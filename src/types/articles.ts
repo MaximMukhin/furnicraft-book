@@ -4,6 +4,8 @@ export type Article = {
   description?: string;
   content: string;
   position: number;
-  type: 'product' | 'global'
+  type: "product" | "global";
+  createdAt: string;
+  updatedAt: string;
 };
 
