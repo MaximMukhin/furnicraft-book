@@ -1,14 +1,15 @@
-import { Footer } from "./layouts/Footer";
-import { Page } from "./layouts/Page";
-import { Header } from "./layouts/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ArticlesPage } from "./views/ArticlePage";
+import { ArticlePage } from "./views/ArticlesPage";
 
 const App = () => {
   return (
-    <div data-semantics="App">
-      <Header></Header>
-      <Page>Мир!</Page>
-      <Footer></Footer>
-    </div>
+    <BrowserRouter>
+      <Routes location="">
+        <Route path="articles" element={<ArticlesPage />} />
+        <Route path="articles/:_id" element={<ArticlePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
