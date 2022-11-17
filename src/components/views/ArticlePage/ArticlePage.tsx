@@ -8,7 +8,8 @@ interface ArticlePageProps {}
 
 export const ArticlePage: React.FC<ArticlePageProps> = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-  const params = useParams();
+  const { _id } = useParams();
+  console.log("params:", _id);
   useEffect(() => {
     axios.get("http://localhost:4000/articles").then((res) => {
       console.log("article", res.data.articles);
@@ -18,7 +19,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = () => {
 
   return (
     <Page>
-      <div>ArticlePage</div>
+      <div>ArticlePage id: {_id}</div>
     </Page>
   );
 };
