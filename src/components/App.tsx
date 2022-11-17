@@ -1,4 +1,6 @@
-import { Page, Footer, Header } from "./layouts/Page";
+import { Footer } from "./layouts/Footer";
+import { Page } from "./layouts/Page";
+import { Header } from "./layouts/Header";
 
 const App = () => {
   return (
