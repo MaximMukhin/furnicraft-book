@@ -5,5 +5,5 @@ interface HeaderProps {}
 export const Header: React.FC<PropsWithChildren<HeaderProps>> = (props) => {
   const { children } = props;
 
-  return <div>Header {children}</div>;
+  return <div>Header</div>;
 };

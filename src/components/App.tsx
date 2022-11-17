@@ -1,11 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { ArticlesPage } from "./views/ArticlePage";
 import { ArticlePage } from "./views/ArticlesPage";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes location="">
+      <Link to={"/articles"}>Статьи</Link>
+      <Link to={"/"}>Статьи</Link>
+      <Routes>
         <Route path="articles" element={<ArticlesPage />} />
         <Route path="articles/:_id" element={<ArticlePage />} />
       </Routes>

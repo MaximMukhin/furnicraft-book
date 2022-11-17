@@ -5,5 +5,5 @@ interface FooterProps {}
 export const Footer: React.FC<PropsWithChildren<FooterProps>> = (props) => {
   const { children } = props;
 
-  return <div>Footer {children}</div>;
+  return <div>Footer</div>;
 };
