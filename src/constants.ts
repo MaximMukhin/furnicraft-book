@@ -7,3 +7,7 @@ export const MODE = (import.meta.env.MODE || "development") as
   | "production";
 
 export const API_HOST = import.meta.env.API_HOST;
+
+export enum LocalStorageKey {
+  Token = "token",
+}
