@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Page } from "@/components/layouts/Page";
 import axios from "axios";
-import { Article } from "@/types";
+import { ArticleModel } from "@/types";
 import { useParams, Link } from "react-router-dom";
 import { ArticleItem } from "@/components/views/ArticlesPage/ArticleItem";
 import { API_HOST } from "@/constants";
@@ -9,7 +9,7 @@ import { API_HOST } from "@/constants";
 interface ArticlesPageProps {}
 
 export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<ArticleModel[]>([]);
   useEffect(() => {
     axios.get(`${API_HOST}/articles`).then((res) => {
       setArticles(res.data.articles);

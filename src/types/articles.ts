@@ -1,4 +1,4 @@
-export type Article = {
+export type ArticleModel = {
   _id: string;
   title: string;
   description?: string;
@@ -8,4 +8,3 @@ export type Article = {
   createdAt: string;
   updatedAt: string;
 };
-
