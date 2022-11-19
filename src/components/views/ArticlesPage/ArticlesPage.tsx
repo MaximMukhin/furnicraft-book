@@ -12,10 +12,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
   const [articles, setArticles] = useState<ArticleModel[]>([]);
 
   useEffect(() => {
-    console.log(
-      "@",
-      getArticles().then((res) => console.log("@@@", res.data.articles))
-    );
+    getArticles().then((res) => setArticles(res.data.articles));
   }, [setArticles]);
 
   return (
