@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import { Page } from "@/components/layouts/Page";
-import axios from "axios";
-import { ArticleModel } from "@/types";
-import { useParams, Link } from "react-router-dom";
 import { ArticleItem } from "@/components/views/ArticlesPage/ArticleItem";
-import { API_HOST } from "@/constants";
+import { ArticleModel } from "@/types";
+import { getArticles } from "@/api";
 
 interface ArticlesPageProps {}
 
 export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
   const [articles, setArticles] = useState<ArticleModel[]>([]);
-  useEffect(() => {
-    axios.get(`${API_HOST}/articles`).then((res) => {
-      setArticles(res.data.articles);
-    });
-  }, [setArticles]);
 
-  const displayArticles = () => {
-    return articles.map((el) => <ArticleItem key={el._id} article={el} />);
-  };
+  useEffect(() => {
+    console.log(getArticles().then());
+  }, [setArticles]);
 
   return (
     <Page>
@@ -31,14 +26,6 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
           </Link>
         ))}
       </div>
-
-      {/*<div>{displayArticles()}</div>*/}
-
-      {/*      <div>
-        {articles.map((el) => (
-          <ArticlesItem key={el._id} articlesProps={el} />
-        ))}
-      </div>*/}
     </Page>
   );
 };

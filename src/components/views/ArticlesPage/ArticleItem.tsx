@@ -1,14 +1,18 @@
 import React from "react";
+import { ArticleModel } from "@/types";
 
-interface ArticleItemProps {}
+interface ArticleItemProps {
+  article: ArticleModel;
+}
 
-export const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
-  const { _id, title, content } = article;
+export const ArticleItem: React.FC<ArticleItemProps> = (props) => {
+  const { article } = props;
+
   return (
     <div style={{ backgroundColor: "lightgray" }}>
-      <p>id: {_id}</p>
-      <p>title: {title}</p>
-      <p>content: {content}</p>
+      <p>id: {article._id}</p>
+      <p>title: {article.title}</p>
+      <p>content: {article.content}</p>
     </div>
   );
 };

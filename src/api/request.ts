@@ -55,7 +55,7 @@ request.interceptors.request.use(
     };
 
     // Params
-    const extraParams: Record<string, any> = {};
+    const extraParams: Record<string, unknown> = {};
 
     config.params = {
       ...config.params,

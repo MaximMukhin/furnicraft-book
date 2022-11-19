@@ -1,9 +1,7 @@
-import React, { PropsWithChildren } from "react";
+import React from "react";
 
 interface FooterProps {}
 
-export const Footer: React.FC<PropsWithChildren<FooterProps>> = (props) => {
-  const { children } = props;
-
+export const Footer: React.FC<FooterProps> = () => {
   return <div>Footer</div>;
 };

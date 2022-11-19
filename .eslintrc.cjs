@@ -49,6 +49,7 @@ module.exports = {
     "no-underscore-dangle": "off",
     "react/jsx-curly-newline": "off",
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-empty-interface": "off",
   },
   settings: {
     react: {
