@@ -5,12 +5,12 @@ import { Footer } from "@/components/layouts/Footer";
 interface PageProps {}
 
 export const Page: React.FC<PropsWithChildren<PageProps>> = (props) => {
-  // const { children } = props;
+  const { children } = props;
 
   return (
     <div>
       <Header></Header>
-      <div>Привет Мир!</div>
+      <div>{children}</div>
       <Footer></Footer>
     </div>
   );
