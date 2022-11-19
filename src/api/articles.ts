@@ -3,13 +3,12 @@ import { ArticleModel, ReqWithPagination, ResWithPagination } from "@/types";
 import { BasePath } from "@/api/basePath";
 import { Methods } from "@/api/methods";
 
-export const getArticles = createRequest<
-  {},
-  ResWithPagination<"articles", ArticleModel[]>
->({
-  method: Methods.Get,
-  url: `${BasePath.Articles}`,
-});
+export const getArticles = () => {
+  return createRequest<{}, ResWithPagination<"articles", ArticleModel[]>>({
+    method: Methods.Get,
+    url: `${BasePath.Articles}`,
+  });
+};
 
 interface ArticleReq extends ReqWithPagination {
   _id: string;

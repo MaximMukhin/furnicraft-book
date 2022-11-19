@@ -83,13 +83,9 @@ request.interceptors.response.use(
   }
 );
 
-export const createRequest = <Req, Res>(
-  config?: BaseApiRequest<Req>
-): ((options?: BaseApiRequest<Req>) => BaseApiResponsePromise<Res>) => {
-  return (options?) =>
-    request({
-      isAuthorization: true,
-      ...config,
-      ...options,
-    });
+export const createRequest = <Req, Res>(config?: BaseApiRequest<Req>) => {
+  return request({
+    isAuthorization: true,
+    ...config,
+  }) as BaseApiResponsePromise<Res>;
 };
