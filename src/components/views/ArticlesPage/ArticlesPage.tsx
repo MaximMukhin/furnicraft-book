@@ -11,7 +11,7 @@ interface ArticlesPageProps {}
 export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   useEffect(() => {
-    axios.get(`${API_HOST}articles`).then((res) => {
+    axios.get(`${API_HOST}/articles`).then((res) => {
       setArticles(res.data.articles);
     });
   }, [setArticles]);

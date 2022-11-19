@@ -11,7 +11,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = () => {
   const [article, setArticle] = useState<Article[]>([]);
   const { _id } = useParams();
   useEffect(() => {
-    axios.get(`${API_HOST}articles/${_id}`).then((res) => {
+    axios.get(`${API_HOST}/articles/${_id}`).then((res) => {
       setArticle(res.data.article);
     });
   }, [setArticle]);
