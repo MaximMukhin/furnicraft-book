@@ -8,5 +8,5 @@ export type PaginationModel = {
 };
 
 export type ReqWithPagination<T = {}> = T & {
-  params: Omit<PaginationModel, "count">;
+  params?: Omit<PaginationModel, "count">;
 };
