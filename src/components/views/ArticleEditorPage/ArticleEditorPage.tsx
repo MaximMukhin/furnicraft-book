@@ -1,32 +1,24 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Page } from "@/components/layouts/Page";
 import { ArticleModel } from "@/types";
+import { API_HOST } from "@/constants";
+import { BasePath } from "@/api";
 
 interface ArticleEditorPageProps {}
 
 export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
-  const [title, setTitle] = useState<ArticleModel | null>(null);
-  const [content, setContent] = useState<ArticleModel | null>(null);
+  const [title, setTitle] = useState<ArticleModel["title"]>("");
+  const [content, setContent] = useState<ArticleModel["content"]>("");
 
-  const addArticle = () => {
-    const article = {
-      title: title,
-      content: content,
-    };
-    console.log("article", article);
-    postArticle(article);
-  };
-
-  const postArticle = (article) => {
-    fetch("http://localhost:4000/articles", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(article),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("data", data));
+  const postArticle = () => {
+    axios
+      .post(`${API_HOST}${BasePath.Articles}`, {
+        title: title,
+        content: content,
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -48,7 +40,7 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
         name="content"
         placeholder="Контент статьи"
       />
-      <button onClick={() => addArticle()}>Создать!</button>
+      <button onClick={() => postArticle()}>Создать!</button>
     </Page>
   );
 };

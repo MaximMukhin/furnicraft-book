@@ -8,14 +8,14 @@ const App = () => {
     <BrowserRouter>
       <Link to={"/articles"}>Статьи </Link>
       <br />
-      <Link to={"/articles-edit"}>Создание статьи </Link>
+      <Link to={"/articles/editor"}>Создание статьи </Link>
       <br />
       <Link to={"/articles/637516c42a6ed7ffe6d247dd"}>Ссылка ID</Link>
 
       <Routes>
         <Route path="articles" element={<ArticlesPage />} />
         <Route path="articles/:_id" element={<ArticlePage />} />
-        <Route path="articles-edit" element={<ArticleEditorPage />} />
+        <Route path="articles/editor" element={<ArticleEditorPage />} />
       </Routes>
     </BrowserRouter>
   );
