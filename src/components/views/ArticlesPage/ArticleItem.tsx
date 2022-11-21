@@ -9,7 +9,7 @@ export const ArticleItem: React.FC<ArticleItemProps> = (props) => {
   const { article } = props;
 
   return (
-    <div style={{ backgroundColor: "lightgray" }}>
+    <div style={{ backgroundColor: "black" }}>
       <p>id: {article._id}</p>
       <p>title: {article.title}</p>
       <p>content: {article.content}</p>
