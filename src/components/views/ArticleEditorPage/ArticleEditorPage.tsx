@@ -12,15 +12,23 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
   const { _id = "" } = useParams();
   const [title, setTitle] = useState<ArticleModel["title"]>("");
   const [content, setContent] = useState<ArticleModel["content"]>("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const createArticle = () => {
+    setIsDisabled(true);
     axios
       .post(`${API_HOST}${BasePath.Articles}`, {
         title: title,
         content: content,
       })
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        console.log(res);
+        setIsDisabled(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsDisabled(false);
+      });
   };
 
   const updateArticle = () => {
@@ -67,7 +75,12 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
       {_id ? (
         <button onClick={() => updateArticle()}>Редактировать!</button>
       ) : (
-        <button onClick={() => createArticle()}>Создать!</button>
+        <button
+          disabled={!title || !content || isDisabled}
+          onClick={() => createArticle()}
+        >
+          Создать!
+        </button>
       )}
     </Page>
   );
