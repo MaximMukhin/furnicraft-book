@@ -17,14 +17,12 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     getArticles().then((res) => setArticles(res.data.articles));
   }, [setArticles]);
 
-  const deleteArticle = (_id) => {
-    console.log("articles", articles);
+  const handelArticleDelete = (_id) => {
     const newArticles = [...articles];
-    console.log(
-      newArticles.splice(
-        newArticles.findIndex((el) => el._id === _id),
-        1
-      )
+
+    newArticles.splice(
+      newArticles.findIndex((el) => el._id === _id),
+      1
     );
 
     setArticles(newArticles);
@@ -50,7 +48,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
             <ArticleItem
               key={el._id}
               article={el}
-              deleteArticle={deleteArticle}
+              onDelete={handelArticleDelete}
             />
           </div>
         ))}
