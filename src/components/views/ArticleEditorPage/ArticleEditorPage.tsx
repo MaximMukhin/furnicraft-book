@@ -13,7 +13,7 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
   const [title, setTitle] = useState<ArticleModel["title"]>("");
   const [content, setContent] = useState<ArticleModel["content"]>("");
 
-  const postArticle = () => {
+  const createArticle = () => {
     axios
       .post(`${API_HOST}${BasePath.Articles}`, {
         title: title,
@@ -23,14 +23,24 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    getArticle({ _id }).then((res) => {
-      if (_id) {
+  const updateArticle = () => {
+    axios
+      .put(`${API_HOST}${BasePath.Articles}/${_id}`, {
+        title: title,
+        content: content,
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  };
+
+  if (_id) {
+    useEffect(() => {
+      getArticle({ _id }).then((res) => {
         setTitle(res.data.article.title);
         setContent(res.data.article.content);
-      }
-    });
-  }, []);
+      });
+    }, []);
+  }
 
   return (
     <Page>
@@ -53,10 +63,11 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
         name="content"
         placeholder="Контент статьи"
       />
+      <br />
       {_id ? (
-        <button onClick={() => postArticle()}>Редактировать!</button>
+        <button onClick={() => updateArticle()}>Редактировать!</button>
       ) : (
-        <button onClick={() => postArticle()}>Создать!</button>
+        <button onClick={() => createArticle()}>Создать!</button>
       )}
     </Page>
   );
