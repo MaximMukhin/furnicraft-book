@@ -33,14 +33,14 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
       .catch((error) => console.log(error));
   };
 
-  if (_id) {
-    useEffect(() => {
+  useEffect(() => {
+    if (_id) {
       getArticle({ _id }).then((res) => {
         setTitle(res.data.article.title);
         setContent(res.data.article.content);
       });
-    }, []);
-  }
+    }
+  }, []);
 
   return (
     <Page>
