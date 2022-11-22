@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 import { Page } from "@/components/layouts/Page";
 import { ArticleModel } from "@/types";
 import { API_HOST } from "@/constants";
 import { BasePath, getArticle } from "@/api";
-import { useParams } from "react-router-dom";
 
 interface ArticleEditorPageProps {}
 
