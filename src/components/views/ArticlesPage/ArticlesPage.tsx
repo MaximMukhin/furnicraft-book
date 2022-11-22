@@ -21,9 +21,13 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
 
       <div>
         {articles.map((el) => (
-          <Link key={el._id} to={`/articles/${el._id}`}>
+          <div key={el._id}>
+            <hr />
+            <Link to={`/articles/${el._id}`}>Читать</Link>
+            <br />
+            <Link to={`/articles/editor/${el._id}`}>Редактировать</Link>
             <ArticleItem key={el._id} article={el} />
-          </Link>
+          </div>
         ))}
       </div>
     </Page>
