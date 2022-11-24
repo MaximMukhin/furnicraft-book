@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { Page } from "@/components/layouts/Page";
 import { ArticleModel } from "@/types";
 import { getArticle } from "@/api";
+import { Button } from "@mui/material";
 
 interface ArticlePageProps {}
 
@@ -17,6 +18,9 @@ export const ArticlePage: React.FC<ArticlePageProps> = () => {
 
   return (
     <Page>
+      <Link style={{ textDecoration: "none" }} to={"/articles"}>
+        <Button variant="contained">Назад</Button>
+      </Link>
       <div>ArticlePage id: {_id}</div>
       <div>Title: {article?.title}</div>
       <div>Content: {article?.content} </div>

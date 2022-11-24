@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useRecoilState } from "recoil";
 
 import { Page } from "@/components/layouts/Page";
 import { ArticleItem } from "@/components/views/ArticlesPage/ArticleItem";
+import { Button } from "@mui/material";
 import { ArticleModel } from "@/types";
 import { BasePath, getArticles } from "@/api";
 import { API_HOST } from "@/constants";
-import Button from "@mui/material/Button";
+import { notificationState } from "@/states/notification";
 
 interface ArticlesPageProps {}
 
 export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
+  const [, setNotification] = useRecoilState(notificationState);
+
   const [articles, setArticles] = useState<ArticleModel[]>([]);
 
   useEffect(() => {
@@ -30,7 +34,10 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
 
     axios
       .delete(`${API_HOST}${BasePath.Articles}/${_id}`)
-      .then((res) => console.log(res))
+      .then((res) => {
+        setNotification({ text: "Статья удалена!", severity: "error" });
+        console.log(res);
+      })
       .catch((error) => console.log(error));
   };
 

@@ -2,13 +2,14 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { ArticlesPage } from "./views/ArticlesPage";
 import { ArticlePage } from "./views/ArticlePage";
 import { ArticleEditorPage } from "@/components/views/ArticleEditorPage";
-import Button from "@mui/material/Button";
-import React from "react";
+import { Notifier } from "@/components/shared/Notifier";
+import { Button } from "@mui/material";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div>
+        <Notifier />
         <Link
           style={{ textDecoration: "none", marginLeft: "8px" }}
           to={"/articles"}
