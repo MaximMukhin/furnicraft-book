@@ -7,6 +7,9 @@ import { ArticleModel } from "@/types";
 import { API_HOST } from "@/constants";
 import { BasePath, getArticle } from "@/api";
 
+import { TextField } from "@mui/material";
+import { CustomizedNotifier } from "@/components/shared/Toster";
+
 interface ArticleEditorPageProps {}
 
 export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
@@ -54,35 +57,37 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
   return (
     <Page>
       <h2>Добавление статьи в базу</h2>
-      <input
-        size={42}
-        defaultValue={title}
+      <TextField
+        size={"small"}
+        id="outlined-basic"
+        placeholder={"Название статьи"}
+        variant="outlined"
+        value={title}
         onChange={(event) => setTitle(event.target.value)}
         name="title"
         type="text"
-        placeholder="Название статьи"
       />
       <br />
-      <textarea
-        rows={10}
-        cols={40}
-        style={{ resize: "none" }}
-        defaultValue={content}
+      <br />
+      <TextField
+        size={"small"}
+        id="outlined-textarea"
+        placeholder={"Контент статьи"}
+        minRows={6}
+        multiline
+        value={content}
         onChange={(event) => setContent(event.target.value)}
         name="content"
-        placeholder="Контент статьи"
       />
       <br />
-      {_id ? (
-        <button onClick={() => updateArticle()}>Редактировать!</button>
-      ) : (
-        <button
-          disabled={!title || !content || isDisabled}
-          onClick={() => createArticle()}
-        >
-          Создать!
-        </button>
-      )}
+      <br />
+      <CustomizedNotifier
+        btnText={_id ? "Редактировать" : "Создать!"}
+        alertText={_id ? "Статья отредактирована" : "Статья создана!"}
+        func={_id ? updateArticle : createArticle}
+        isDisabled={!title || !content || isDisabled}
+      />
+      <br />
     </Page>
   );
 };
