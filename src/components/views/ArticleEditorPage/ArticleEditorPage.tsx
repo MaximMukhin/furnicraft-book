@@ -8,7 +8,7 @@ import { API_HOST } from "@/constants";
 import { BasePath, getArticle } from "@/api";
 
 import { TextField } from "@mui/material";
-import { CustomizedNotifier } from "@/components/shared/Toster";
+import { CustomizedNotifier } from "@/components/shared/Notifier";
 
 interface ArticleEditorPageProps {}
 
