@@ -18,8 +18,6 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
   const [content, setContent] = useState<ArticleModel["content"]>("");
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const isDisabled2 = !title || !content || isDisabled;
-
   const createArticle = () => {
     setIsDisabled(true);
     axios
