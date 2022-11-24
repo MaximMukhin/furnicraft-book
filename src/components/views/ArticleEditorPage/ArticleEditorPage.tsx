@@ -7,10 +7,8 @@ import { ArticleModel } from "@/types";
 import { API_HOST } from "@/constants";
 import { BasePath, getArticle } from "@/api";
 
-import Button from "@mui/material/Button";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { TextField } from "@mui/material";
+import { CustomizedNotifier } from "@/components/shared/Toster";
 
 interface ArticleEditorPageProps {}
 
@@ -19,43 +17,8 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
   const [title, setTitle] = useState<ArticleModel["title"]>("");
   const [content, setContent] = useState<ArticleModel["content"]>("");
   const [isDisabled, setIsDisabled] = useState(false);
-  const [create, setCreate] = React.useState(false);
-  const [update, setUpdate] = React.useState(false);
 
-  const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-    props,
-    ref
-  ) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
-
-  const onClickCreate = () => {
-    setCreate(true);
-  };
-
-  const handleCreate = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setCreate(false);
-  };
-
-  const onClickUpdate = () => {
-    setUpdate(true);
-  };
-
-  const handleUpdate = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setUpdate(false);
-  };
+  const isDisabled2 = !title || !content || isDisabled;
 
   const createArticle = () => {
     setIsDisabled(true);
@@ -120,40 +83,13 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
       />
       <br />
       <br />
-      {_id ? (
-        <Button
-          variant="contained"
-          onClick={() => {
-            updateArticle();
-            onClickUpdate();
-          }}
-        >
-          Редактировать!
-        </Button>
-      ) : (
-        <Button
-          variant="contained"
-          disabled={!title || !content || isDisabled}
-          onClick={() => {
-            createArticle();
-            onClickCreate();
-          }}
-        >
-          Создать!
-        </Button>
-      )}
-
-      <Snackbar open={create} autoHideDuration={6000} onClose={handleCreate}>
-        <Alert onClose={handleCreate} severity="info" sx={{ width: "100%" }}>
-          Статья создана!
-        </Alert>
-      </Snackbar>
-
-      <Snackbar open={update} autoHideDuration={6000} onClose={handleUpdate}>
-        <Alert onClose={handleUpdate} severity="info" sx={{ width: "100%" }}>
-          Статья отредактирована!
-        </Alert>
-      </Snackbar>
+      <CustomizedNotifier
+        btnText={_id ? "Редактировать" : "Создать!"}
+        alertText={_id ? "Статья отредактирована" : "Статья создана!"}
+        func={_id ? updateArticle : createArticle}
+        isDisabled={!title || !content || isDisabled}
+      />
+      <br />
     </Page>
   );
 };
