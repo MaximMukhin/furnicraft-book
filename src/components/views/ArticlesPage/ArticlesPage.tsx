@@ -7,6 +7,7 @@ import { ArticleItem } from "@/components/views/ArticlesPage/ArticleItem";
 import { ArticleModel } from "@/types";
 import { BasePath, getArticles } from "@/api";
 import { API_HOST } from "@/constants";
+import Button from "@mui/material/Button";
 
 interface ArticlesPageProps {}
 
@@ -41,9 +42,21 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
         {articles.map((el) => (
           <div key={el._id}>
             <hr />
-            <Link to={`/articles/${el._id}`}>Читать</Link>
-            <br />
-            <Link to={`/articles/editor/${el._id}`}>Редактировать</Link>
+            <div>
+              <Link
+                style={{ textDecoration: "none", marginLeft: "8px" }}
+                to={`/articles/${el._id}`}
+              >
+                <Button variant="contained">Читать</Button>
+              </Link>
+
+              <Link
+                style={{ textDecoration: "none", marginLeft: "8px" }}
+                to={`/articles/editor/${el._id}`}
+              >
+                <Button variant="contained">Редактировать</Button>
+              </Link>
+            </div>
             <br />
             <ArticleItem
               key={el._id}

@@ -35,7 +35,7 @@ export function CustomizedNotifier(props) {
   return (
     <>
       <Button
-        variant="outlined"
+        variant="contained"
         disabled={isDisabled}
         onClick={() => {
           handleClick();
