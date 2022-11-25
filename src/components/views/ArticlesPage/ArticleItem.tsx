@@ -10,9 +10,9 @@ export const ArticleItem: React.FC<ArticleItemProps> = (props) => {
   const { article, onDelete } = props;
 
   return (
-    <div style={{ marginLeft: "8px" }}>
+    <div>
       <p style={{ margin: "4px 0" }}>id: {article._id}</p>
-      <p style={{ margin: "4px 0" }}>title: {article.title}</p>
+      <h2 style={{ margin: "4px 0" }}>title: {article.title}</h2>
       <p style={{ margin: "4px 0" }}>content: {article.content}</p>
 
       <Button

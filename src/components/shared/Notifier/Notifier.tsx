@@ -1,25 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
 
-import Button from "@mui/material/Button";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import { Snackbar, Alert, AlertColor } from "@mui/material";
+import { notificationState } from "@/states/notification";
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref
-) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
-interface CustomizedNotifier {}
-
-export function CustomizedNotifier(props) {
-  const { btnText, alertText, func, isDisabled } = props;
+export function Notifier() {
+  const [notification, setNotification] = useRecoilState(notificationState);
   const [open, setOpen] = React.useState(false);
 
-  const handleClick = () => {
-    setOpen(true);
-  };
+  useEffect(() => {
+    if (notification.content) {
+      setOpen(true);
+    }
+  }, [setOpen, notification]);
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -28,27 +21,21 @@ export function CustomizedNotifier(props) {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
+    setNotification({ content: "", severity: notification.severity });
   };
 
   return (
-    <>
-      <Button
-        variant="contained"
-        disabled={isDisabled}
-        onClick={() => {
-          handleClick();
-          func();
-        }}
+    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Alert
+        elevation={6}
+        variant="filled"
+        onClose={handleClose}
+        severity={notification.severity}
+        sx={{ width: "100%" }}
       >
-        {btnText}
-      </Button>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          {alertText}
-        </Alert>
-      </Snackbar>
-    </>
+        {notification.content}
+      </Alert>
+    </Snackbar>
   );
 }
