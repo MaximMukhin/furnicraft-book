@@ -37,7 +37,7 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
       })
       .then((res) => {
         console.log(res);
-        setNotification({ text: "Статья создана!", severity: "success" });
+        setNotification({ content: "Статья создана!", severity: "success" });
         setIsDisabled(false);
       })
       .catch((error) => {
@@ -57,7 +57,7 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
         console.log(res);
         setIsDisabled(false);
         setNotification({
-          text: "Статья отредактирована!",
+          content: "Статья отредактирована!",
           severity: "success",
         });
       })
@@ -78,7 +78,7 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
 
   return (
     <Page>
-      <h2>Добавление статьи в базу</h2>
+      <h2>{_id ? "Редактировать статью" : "Добавление статьи в базу"}</h2>
       <TextField
         size={"small"}
         id="outlined-basic"

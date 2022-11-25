@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Page } from "@/components/layouts/Page";
 import { ArticleModel } from "@/types";
@@ -9,6 +9,11 @@ import { Button } from "@mui/material";
 interface ArticlePageProps {}
 
 export const ArticlePage: React.FC<ArticlePageProps> = () => {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate("/articles");
+  };
+
   const [article, setArticle] = useState<ArticleModel | null>(null);
   const { _id = "" } = useParams();
 
@@ -18,9 +23,13 @@ export const ArticlePage: React.FC<ArticlePageProps> = () => {
 
   return (
     <Page>
-      <Link style={{ textDecoration: "none" }} to={"/articles"}>
-        <Button variant="contained">Назад</Button>
-      </Link>
+      <Button
+        style={{ textDecoration: "none", marginTop: "8px" }}
+        onClick={goBack}
+        variant="contained"
+      >
+        Назад
+      </Button>
       <div>ArticlePage id: {_id}</div>
       <div>Title: {article?.title}</div>
       <div>Content: {article?.content} </div>

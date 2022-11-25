@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
-import { Snackbar, Alert } from "@mui/material";
+import { Snackbar, Alert, AlertColor } from "@mui/material";
 import { notificationState } from "@/states/notification";
 
 export function Notifier() {
@@ -9,7 +9,7 @@ export function Notifier() {
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
-    if (notification.text) {
+    if (notification.content) {
       setOpen(true);
     }
   }, [setOpen, notification]);
@@ -22,7 +22,7 @@ export function Notifier() {
       return;
     }
     setOpen(false);
-    setNotification({ text: "", severity: notification.severity });
+    setNotification({ content: "", severity: notification.severity });
   };
 
   return (
@@ -34,7 +34,7 @@ export function Notifier() {
         severity={notification.severity}
         sx={{ width: "100%" }}
       >
-        {notification.text}
+        {notification.content}
       </Alert>
     </Snackbar>
   );

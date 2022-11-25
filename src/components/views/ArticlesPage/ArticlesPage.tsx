@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 import { Page } from "@/components/layouts/Page";
 import { ArticleItem } from "@/components/views/ArticlesPage/ArticleItem";
-import { Button } from "@mui/material";
+import { Button, Card, CardHeader, IconButton } from "@mui/material";
 import { ArticleModel } from "@/types";
 import { BasePath, getArticles } from "@/api";
 import { API_HOST } from "@/constants";
 import { notificationState } from "@/states/notification";
+import { DeleteOutlined } from "@mui/icons-material";
 
 interface ArticlesPageProps {}
 
 export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
-  const [, setNotification] = useRecoilState(notificationState);
+  const navigate = useNavigate();
+  const nav = (link) => {
+    navigate(link);
+  };
+  const setNotification = useSetRecoilState(notificationState);
 
   const [articles, setArticles] = useState<ArticleModel[]>([]);
 
@@ -35,7 +40,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     axios
       .delete(`${API_HOST}${BasePath.Articles}/${_id}`)
       .then((res) => {
-        setNotification({ text: "Статья удалена!", severity: "error" });
+        setNotification({ content: "Статья удалена!", severity: "error" });
         console.log(res);
       })
       .catch((error) => console.log(error));
@@ -43,26 +48,34 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
 
   return (
     <Page>
-      <div>ArticlesPage</div>
-
       <div>
         {articles.map((el) => (
-          <div key={el._id}>
-            <hr />
+          <div
+            key={el._id}
+            style={{
+              marginTop: "8px",
+              padding: "12px",
+              maxWidth: "400px",
+              paddingTop: "12px",
+              border: "1px solid lightGray",
+              borderRadius: "4px",
+            }}
+          >
             <div>
-              <Link
-                style={{ textDecoration: "none", marginLeft: "8px" }}
-                to={`/articles/${el._id}`}
+              <Button
+                onClick={() => nav(`/articles/${el._id}`)}
+                variant="contained"
               >
-                <Button variant="contained">Читать</Button>
-              </Link>
+                Читать
+              </Button>
 
-              <Link
-                style={{ textDecoration: "none", marginLeft: "8px" }}
-                to={`/articles/editor/${el._id}`}
+              <Button
+                style={{ marginLeft: "8px" }}
+                onClick={() => nav(`/articles/editor/${el._id}`)}
+                variant="contained"
               >
-                <Button variant="contained">Редактировать</Button>
-              </Link>
+                Редактировать
+              </Button>
             </div>
             <br />
             <ArticleItem

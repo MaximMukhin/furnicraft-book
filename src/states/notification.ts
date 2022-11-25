@@ -1,6 +1,7 @@
 import { atom } from "recoil";
+import { RecoilKey } from "@/states/RecoilKey";
 
 export const notificationState = atom({
-  key: "notification",
-  default: { text: "", severity: "success" },
+  key: RecoilKey.NotificationState,
+  default: { content: "", severity: "success" },
 });
