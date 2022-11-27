@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 import { Page } from "@/components/layouts/Page";
 import { TextField, Button } from "@mui/material";
@@ -13,7 +13,8 @@ import { notificationState } from "@/states/notification";
 interface ArticleEditorPageProps {}
 
 export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
-  const [, setNotification] = useRecoilState(notificationState);
+  const setNotification = useSetRecoilState(notificationState);
+  const navigate = useNavigate();
 
   const { _id = "" } = useParams();
 
@@ -37,6 +38,7 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
       })
       .then((res) => {
         console.log(res);
+        navigate(`/articles/editor/${res.data.article._id}`);
         setNotification({ content: "Статья создана!", severity: "success" });
         setIsDisabled(false);
       })

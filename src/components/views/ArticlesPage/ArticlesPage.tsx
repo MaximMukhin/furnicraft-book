@@ -5,12 +5,11 @@ import { useSetRecoilState } from "recoil";
 
 import { Page } from "@/components/layouts/Page";
 import { ArticleItem } from "@/components/views/ArticlesPage/ArticleItem";
-import { Button, Card, CardHeader, IconButton } from "@mui/material";
+import { Button } from "@mui/material";
 import { ArticleModel } from "@/types";
 import { BasePath, getArticles } from "@/api";
 import { API_HOST } from "@/constants";
 import { notificationState } from "@/states/notification";
-import { DeleteOutlined } from "@mui/icons-material";
 
 interface ArticlesPageProps {}
 
