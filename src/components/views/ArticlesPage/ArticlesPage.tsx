@@ -15,7 +15,7 @@ interface ArticlesPageProps {}
 
 export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
   const navigate = useNavigate();
-  const nav = (link) => {
+  const nav = (link: string) => {
     navigate(link);
   };
   const setNotification = useSetRecoilState(notificationState);
@@ -26,7 +26,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     getArticles().then((res) => setArticles(res.data.articles));
   }, [setArticles]);
 
-  const handelArticleDelete = (_id) => {
+  const handelArticleDelete = (_id: string) => {
     const newArticles = [...articles];
 
     newArticles.splice(

@@ -7,7 +7,8 @@ interface NavigationProps {}
 export const Navigation: React.FC<NavigationProps> = () => {
   const navigate = useNavigate();
 
-  const nav = (link) => {
+  const nav = (link: string) => {
+    console.log(typeof link);
     navigate(link);
   };
 
