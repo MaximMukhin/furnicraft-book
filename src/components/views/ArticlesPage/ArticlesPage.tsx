@@ -15,9 +15,7 @@ interface ArticlesPageProps {}
 
 export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
   const navigate = useNavigate();
-  const nav = (link: string) => {
-    navigate(link);
-  };
+
   const setNotification = useSetRecoilState(notificationState);
 
   const [articles, setArticles] = useState<ArticleModel[]>([]);
@@ -62,7 +60,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
           >
             <div>
               <Button
-                onClick={() => nav(`/articles/${el._id}`)}
+                onClick={() => navigate(`/articles/${el._id}`)}
                 variant="contained"
               >
                 Читать
@@ -70,7 +68,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
 
               <Button
                 style={{ marginLeft: "8px" }}
-                onClick={() => nav(`/articles/editor/${el._id}`)}
+                onClick={() => navigate(`/articles/editor/${el._id}`)}
                 variant="contained"
               >
                 Редактировать

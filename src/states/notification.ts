@@ -1,12 +1,8 @@
 import { atom } from "recoil";
 import { RecoilKey } from "@/states/RecoilKey";
+import { NotificationModel } from "@/types";
 
-export interface NotificationState {
-  content: string;
-  severity: "success" | "info" | "warning" | "error";
-}
-
-export const notificationState = atom<NotificationState>({
+export const notificationState = atom<NotificationModel>({
   key: RecoilKey.NotificationState,
   default: { content: "", severity: "success" },
 });

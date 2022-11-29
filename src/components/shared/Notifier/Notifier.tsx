@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 
 import { Snackbar, Alert } from "@mui/material";
-import { notificationState, NotificationState } from "@/states/notification";
+import { notificationState } from "@/states/notification";
+import { NotificationModel } from "@/types";
 
 export function Notifier() {
   const [notification, setNotification] =
-    useRecoilState<NotificationState>(notificationState);
+    useRecoilState<NotificationModel>(notificationState);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
