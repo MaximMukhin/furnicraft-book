@@ -10,9 +10,6 @@ interface ArticlePageProps {}
 
 export const ArticlePage: React.FC<ArticlePageProps> = () => {
   const navigate = useNavigate();
-  const goBack = () => {
-    navigate("/articles");
-  };
 
   const [article, setArticle] = useState<ArticleModel | null>(null);
   const { _id = "" } = useParams();
@@ -25,7 +22,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = () => {
     <Page>
       <Button
         style={{ textDecoration: "none", marginTop: "8px" }}
-        onClick={goBack}
+        onClick={() => navigate("/articles")}
         variant="contained"
       >
         Назад

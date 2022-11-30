@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 
 interface ArticleItemProps {
   article: ArticleModel;
+  onDelete: (_id: string) => void;
 }
 
 export const ArticleItem: React.FC<ArticleItemProps> = (props) => {
