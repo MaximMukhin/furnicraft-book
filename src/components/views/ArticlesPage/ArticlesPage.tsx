@@ -44,7 +44,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
   };
 
   return (
-    <Page>
+    <Page title="Все статьи">
       <div>
         {articles.map((el) => (
           <div

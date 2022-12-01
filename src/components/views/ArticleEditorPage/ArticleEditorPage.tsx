@@ -79,8 +79,7 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
   }, []);
 
   return (
-    <Page>
-      <h2>{_id ? "Редактировать статью" : "Добавление статьи в базу"}</h2>
+    <Page title={_id ? "Редактировать статью" : "Добавление статьи в базу"}>
       <TextField
         size={"small"}
         id="outlined-basic"

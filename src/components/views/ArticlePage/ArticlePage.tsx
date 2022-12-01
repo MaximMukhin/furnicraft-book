@@ -19,7 +19,7 @@ export const ArticlePage: React.FC<ArticlePageProps> = () => {
   }, [setArticle]);
 
   return (
-    <Page>
+    <Page title={article?.title}>
       <Button
         style={{ textDecoration: "none", marginTop: "8px" }}
         onClick={() => navigate("/articles")}
