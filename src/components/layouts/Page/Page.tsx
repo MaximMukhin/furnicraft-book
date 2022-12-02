@@ -13,7 +13,7 @@ export const Page: React.FC<PropsWithChildren<PageProps>> = (props) => {
   return (
     <div>
       <Header></Header>
-      <TabTitle tabTitle={title} />
+      <TabTitle title={title} />
       <h2>{title}</h2>
       <div>{children}</div>
       <Footer></Footer>

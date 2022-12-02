@@ -1,15 +1,17 @@
-import React, { PropsWithChildren } from "react";
+import React, { useEffect } from "react";
 
 interface TabTitleProps {
-  tabTitle?: string;
+  title?: string;
 }
 
-export const TabTitle: React.FC<PropsWithChildren<TabTitleProps>> = (props) => {
-  const { tabTitle } = props;
+export const TabTitle: React.FC<TabTitleProps> = (props) => {
+  const { title } = props;
 
-  if (typeof tabTitle === "string") {
-    document.title = tabTitle;
-  }
+  useEffect(() => {
+    if (typeof title === "string") {
+      document.title = title;
+    }
+  }, [title]);
 
-  return <div></div>;
+  return null;
 };
