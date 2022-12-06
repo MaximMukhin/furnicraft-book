@@ -7,7 +7,7 @@ import {
 
 import { ColorScheme } from "@/constants";
 
-import useColorScheme from "@/hooks/useColorScheme";
+//import useColorScheme from "@/hooks/useColorScheme";
 
 import typography from "./typography";
 import shadows from "./shadows";
@@ -32,10 +32,11 @@ const theme = {
 const ThemeProvider: React.FC<React.PropsWithChildren<{}>> = (props) => {
   const { children } = props;
 
-  const [colorScheme] = useColorScheme();
+  //  const [colorScheme] = useColorScheme();
 
   return (
-    <MuiThemeProvider theme={theme[colorScheme]}>
+    //    <MuiThemeProvider theme={theme[colorScheme]}>
+    <MuiThemeProvider theme={theme["light"]}>
       <CssBaseline />
       {children}
     </MuiThemeProvider>
