@@ -5,6 +5,7 @@ import { Page } from "@/components/layouts/Page";
 import { ArticleModel } from "@/types";
 import { getArticle } from "@/api";
 import { Button } from "@mui/material";
+import { CardStyled } from "@/components/styled";
 
 interface ArticlePageProps {}
 
@@ -20,16 +21,18 @@ export const ArticlePage: React.FC<ArticlePageProps> = () => {
 
   return (
     <Page title={article?.title}>
-      <Button
-        style={{ textDecoration: "none", marginTop: "8px" }}
-        onClick={() => navigate("/articles")}
-        variant="contained"
-      >
-        Назад
-      </Button>
-      <div>ArticlePage id: {_id}</div>
-      <div>Title: {article?.title}</div>
-      <div>Content: {article?.content} </div>
+      <CardStyled>
+        <div>ArticlePage id: {_id}</div>
+        <div>Title: {article?.title}</div>
+        <div>Content: {article?.content} </div>
+        <Button
+          style={{ textDecoration: "none", marginTop: "8px" }}
+          onClick={() => navigate("/articles")}
+          variant="contained"
+        >
+          Назад
+        </Button>
+      </CardStyled>
     </Page>
   );
 };

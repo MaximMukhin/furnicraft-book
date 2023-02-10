@@ -10,6 +10,7 @@ import { ArticleModel } from "@/types";
 import { BasePath, getArticles } from "@/api";
 import { API_HOST } from "@/constants";
 import { notificationState } from "@/states/notification";
+import { CardStyled } from "@/components/styled";
 
 interface ArticlesPageProps {}
 
@@ -47,17 +48,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     <Page title="Все статьи">
       <div>
         {articles.map((el) => (
-          <div
-            key={el._id}
-            style={{
-              marginTop: "8px",
-              padding: "12px",
-              maxWidth: "400px",
-              paddingTop: "12px",
-              border: "1px solid lightGray",
-              borderRadius: "4px",
-            }}
-          >
+          <CardStyled key={el._id}>
             <div>
               <Button
                 onClick={() => navigate(`/articles/${el._id}`)}
@@ -80,7 +71,7 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
               article={el}
               onDelete={handelArticleDelete}
             />
-          </div>
+          </CardStyled>
         ))}
       </div>
     </Page>
