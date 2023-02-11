@@ -81,6 +81,7 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
   return (
     <Page title={_id ? "Редактировать статью" : "Добавление статьи в базу"}>
       <TextField
+        fullWidth
         size={"small"}
         id="outlined-basic"
         placeholder={"Название статьи"}
@@ -93,10 +94,11 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
       <br />
       <br />
       <TextField
+        fullWidth
         size={"small"}
         id="outlined-textarea"
         placeholder={"Контент статьи"}
-        minRows={6}
+        minRows={8}
         multiline
         value={content}
         onChange={(event) => setContent(event.target.value)}
