@@ -90,9 +90,8 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
         onChange={(event) => setTitle(event.target.value)}
         name="title"
         type="text"
+        sx={{ mb: 1 }}
       />
-      <br />
-      <br />
       <TextField
         fullWidth
         size={"small"}
@@ -103,8 +102,8 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
         value={content}
         onChange={(event) => setContent(event.target.value)}
         name="content"
+        sx={{ mb: 1 }}
       />
-      <br /> <br />
       {_id ? (
         <Button
           disabled={!title || !content || isDisabled}
@@ -122,8 +121,6 @@ export const ArticleEditorPage: React.FC<ArticleEditorPageProps> = () => {
           Создать!
         </Button>
       )}
-      <br />
-      <br />
     </Page>
   );
 };

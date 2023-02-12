@@ -1,13 +1,13 @@
 import React from "react";
-import { HeaderStyled } from "@/components/styled/HeaderStyled";
 import { Navigation } from "@/components/layouts/Navigation";
+import { StyledHeader } from "@/components/layouts/Header/styled";
 
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = () => {
   return (
-    <HeaderStyled>
+    <StyledHeader>
       <Navigation />
-    </HeaderStyled>
+    </StyledHeader>
   );
 };

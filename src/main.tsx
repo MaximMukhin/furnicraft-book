@@ -3,6 +3,7 @@ import { RecoilRoot } from "recoil";
 
 import ThemeProvider from "@/components/theme/ThemeProvider";
 import App from "@/components/App";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <RecoilRoot>

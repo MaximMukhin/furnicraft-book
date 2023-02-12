@@ -4,8 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Page } from "@/components/layouts/Page";
 import { ArticleModel } from "@/types";
 import { getArticle } from "@/api";
-import { Button } from "@mui/material";
-import { CardStyled } from "@/components/styled";
+import { Button, Card, Typography } from "@mui/material";
 
 interface ArticlePageProps {}
 
@@ -21,18 +20,18 @@ export const ArticlePage: React.FC<ArticlePageProps> = () => {
 
   return (
     <Page title={article?.title}>
-      <CardStyled>
-        <div>ArticlePage id: {_id}</div>
-        <div>Title: {article?.title}</div>
-        <div>Content: {article?.content} </div>
+      <Card variant={"outlined"} sx={{ minWidth: 200, mt: 1, p: 1 }}>
+        <Typography variant={"subtitle1"}>ArticlePage id: {_id}</Typography>
+        <Typography variant={"h2"}>Title: {article?.title}</Typography>
+        <Typography variant={"body2"}>Content: {article?.content} </Typography>
         <Button
-          style={{ textDecoration: "none", marginTop: "8px" }}
           onClick={() => navigate("/articles")}
+          sx={{ mt: 1 }}
           variant="contained"
         >
           Назад
         </Button>
-      </CardStyled>
+      </Card>
     </Page>
   );
 };
