@@ -1,6 +1,6 @@
 import { styled } from "@/utils";
 
-export const ContainerStyled = styled("div")`
+export const StyledContainer = styled("div")`
   min-height: 100%;
   max-width: 1220px;
   display: flex;

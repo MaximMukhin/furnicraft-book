@@ -1,6 +1,7 @@
 import React from "react";
 import { ArticleModel } from "@/types";
 import Button from "@mui/material/Button";
+import { Typography } from "@mui/material";
 
 interface ArticleItemProps {
   article: ArticleModel;
@@ -12,14 +13,15 @@ export const ArticleItem: React.FC<ArticleItemProps> = (props) => {
 
   return (
     <div>
-      <p style={{ margin: "4px 0" }}>id: {article._id}</p>
-      <h2 style={{ margin: "4px 0" }}>title: {article.title}</h2>
-      <p style={{ margin: "4px 0" }}>content: {article.content}</p>
+      <Typography variant={"subtitle1"}>id: {article._id}</Typography>
+      <Typography variant={"h2"}>title: {article.title}</Typography>
+      <Typography variant={"body2"}>content: {article.content}</Typography>
 
       <Button
         onClick={() => onDelete(article._id)}
         variant="contained"
         color="error"
+        sx={{ mt: 1 }}
       >
         Удалить
       </Button>

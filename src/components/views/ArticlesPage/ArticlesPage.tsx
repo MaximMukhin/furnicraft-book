@@ -5,12 +5,11 @@ import { useSetRecoilState } from "recoil";
 
 import { Page } from "@/components/layouts/Page";
 import { ArticleItem } from "@/components/views/ArticlesPage/ArticleItem";
-import { Button } from "@mui/material";
+import { Button, Card } from "@mui/material";
 import { ArticleModel } from "@/types";
 import { BasePath, getArticles } from "@/api";
 import { API_HOST } from "@/constants";
 import { notificationState } from "@/states/notification";
-import { CardStyled } from "@/components/styled";
 
 interface ArticlesPageProps {}
 
@@ -48,9 +47,14 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
     <Page title="Все статьи">
       <div>
         {articles.map((el) => (
-          <CardStyled key={el._id}>
+          <Card
+            variant={"outlined"}
+            sx={{ minWidth: 200, mt: 1, p: 1 }}
+            key={el._id}
+          >
             <div>
               <Button
+                sx={{ mb: 1 }}
                 onClick={() => navigate(`/articles/${el._id}`)}
                 variant="contained"
               >
@@ -58,20 +62,19 @@ export const ArticlesPage: React.FC<ArticlesPageProps> = () => {
               </Button>
 
               <Button
-                style={{ marginLeft: "8px" }}
+                sx={{ ml: 1, mb: 1 }}
                 onClick={() => navigate(`/articles/editor/${el._id}`)}
                 variant="contained"
               >
                 Редактировать
               </Button>
             </div>
-            <br />
             <ArticleItem
               key={el._id}
               article={el}
               onDelete={handelArticleDelete}
             />
-          </CardStyled>
+          </Card>
         ))}
       </div>
     </Page>
